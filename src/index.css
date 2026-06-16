@@ -1,0 +1,216 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-primary-sky: #6FCCDD;
+  --color-primary-secondary: #5752A3;
+  --color-primary-bg: #000000;
+  
+  /* All neutral text colours remapped for dark-first design */
+  --color-neutral-white: #FFFFFF;
+  --color-neutral-light: #E8EAF0;       /* bright readable body text */
+  --color-neutral-medium: #8F9BB3;      /* muted labels / meta */
+  --color-neutral-dark: #FFFFFF;        /* was black — now white so nothing disappears */
+  
+  --color-brand-orange-dark: #FF9255;
+  --color-brand-orange-medium: #E36B00;
+  --color-brand-orange-light: rgba(255, 146, 85, 0.15);
+  
+  --color-brand-yellow-dark: #FFD74A;
+  --color-brand-yellow-medium: #FFE581;
+  --color-brand-yellow-light: rgba(255, 215, 74, 0.15);
+  
+  --color-brand-red-dark: #FC6383;
+  --color-brand-red-medium: #E53535;
+  --color-brand-red-light: rgba(252, 99, 131, 0.15);
+  
+  --color-brand-sky-dark: #31B6CE;
+  --color-brand-sky-medium: #268DAD;
+  --color-brand-sky-light: rgba(49, 182, 206, 0.12);
+  
+  --color-brand-sec-dark: #514D99;
+  --color-brand-sec-medium: #3F3C77;
+  --color-brand-sec-light: rgba(81, 77, 153, 0.15);
+  
+  --color-dark-bg-dark: #07070D;
+  --color-dark-bg-medium: #0D0D16;
+  --color-dark-bg-light: #14141F;
+  
+  --font-sans: 'Montserrat', sans-serif;
+  --font-montserrat: 'Montserrat', sans-serif;
+}
+
+/* ─── Global Base ─────────────────────────────────────────────────────────── */
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    color-scheme: dark;
+  }
+
+  body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #000000;
+    color: #E8EAF0;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Headings: bright white */
+  h1, h2, h3, h4, h5, h6 {
+    color: #FFFFFF;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+
+  /* Body copy: off-white for comfortable reading */
+  p, span, li, label, a {
+    color: inherit;
+  }
+
+  /* Inputs & selects — dark glass style */
+  input, select, textarea {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    border-radius: 12px;
+    padding: 10px 16px;
+    font-size: 12px;
+    font-family: 'Montserrat', sans-serif;
+    color: #E8EAF0;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    width: 100%;
+  }
+
+  input::placeholder, textarea::placeholder {
+    color: rgba(143, 155, 179, 0.55);
+  }
+
+  input:focus, select:focus, textarea:focus {
+    border-color: #6FCCDD;
+    box-shadow: 0 0 0 3px rgba(111, 204, 221, 0.08);
+  }
+
+  /* Dropdown option text must be visible */
+  select option {
+    background-color: #0D0D16;
+    color: #E8EAF0;
+  }
+}
+
+/* ─── Scrollbar ───────────────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #2A2A40; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #3D3D60; }
+
+/* ─── Glassmorphism surface ───────────────────────────────────────────────── */
+.glass-panel {
+  background: rgba(13, 13, 22, 0.72);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(111, 204, 221, 0.08);
+}
+
+/* ─── Hover lift card effect ──────────────────────────────────────────────── */
+.hover-lift {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.3s ease,
+              box-shadow 0.3s ease;
+}
+.hover-lift:hover {
+  transform: translateY(-5px);
+  border-color: rgba(111, 204, 221, 0.28);
+  box-shadow: 0 18px 36px -12px rgba(87, 82, 163, 0.30);
+}
+
+/* ─── Gradient text ───────────────────────────────────────────────────────── */
+.gradient-text {
+  background: linear-gradient(135deg, #6FCCDD 0%, #5752A3 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ─── Primary CTA button ──────────────────────────────────────────────────── */
+.btn-launch {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 28px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  background: linear-gradient(135deg, #6FCCDD 0%, #5752A3 100%);
+  box-shadow: 0 4px 20px rgba(87, 82, 163, 0.35);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+.btn-launch:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(111, 204, 221, 0.35);
+  filter: brightness(1.08);
+}
+.btn-launch:active {
+  transform: scale(0.97);
+}
+
+/* ─── Tag / badge helpers ─────────────────────────────────────────────────── */
+.tag-sky {
+  background: rgba(49, 182, 206, 0.12);
+  color: #6FCCDD;
+}
+.tag-purple {
+  background: rgba(81, 77, 153, 0.18);
+  color: #A09AE8;
+}
+.tag-yellow {
+  background: rgba(255, 215, 74, 0.14);
+  color: #FFD74A;
+}
+.tag-orange {
+  background: rgba(255, 146, 85, 0.14);
+  color: #FF9255;
+}
+.tag-red {
+  background: rgba(252, 99, 131, 0.14);
+  color: #FC6383;
+}
+
+/* ─── Dark overrides — remove Tailwind light-mode leakage ────────────────── */
+/* Force light-mode Tailwind bg-white to be dark */
+.bg-white {
+  background-color: rgba(255, 255, 255, 0.04) !important;
+}
+.bg-white\/40 {
+  background-color: rgba(255, 255, 255, 0.04) !important;
+}
+.bg-neutral-light,
+.bg-neutral-light\/50 {
+  background-color: rgba(255, 255, 255, 0.04) !important;
+}
+
+/* Force text-neutral-dark → white on dark bg */
+.text-neutral-dark {
+  color: #E8EAF0 !important;
+}
+
+/* ─── Utility: hide scrollbar visually ───────────────────────────────────── */
+.scrollbar-none::-webkit-scrollbar { display: none; }
+.scrollbar-none { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* ─── Footer ──────────────────────────────────────────────────────────────── */
+footer {
+  background: rgba(7, 7, 13, 0.80) !important;
+  color: #5B5D7A;
+}
